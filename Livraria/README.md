@@ -1,59 +1,93 @@
-# Gerenciador de Tarefas
+# Modelo Entidade-Relacionamento (MER)
 
-Este projeto é uma aplicação web simples para gerenciar tarefas e usuários, utilizando Flask e SQLite.
+ ## Entidades:
+Livro: Representa um livro na papelaria.
 
-## Tecnologias Utilizadas
+Atributos:
+id_livro (PK)
+titulo
+isbn
+edicao
+editora
+ano_publicacao
+preco_capa
+categoria
+Autor: Representa um autor de livros.
 
-- **Python** (Flask)
-- **SQLite** (Banco de Dados)
-- **HTML** (Templates)
+Atributos:
+id_autor (PK)
+nome
+nacionalidade
+biografia
+Estoque: Representa o controle de entrada e saída de livros no estoque.
 
-## Estrutura do Projeto
+Atributos:
+id_estoque (PK)
+id_livro (FK)
+quantidade
+data_entrada
+data_saida
+Venda: Representa uma venda realizada de um livro.
 
-```
-seu_projeto/
-│-- app.py  # Código principal do Flask
-│-- database.db  # Banco de dados SQLite (criado automaticamente)
-│-- templates/
-│   │-- index.html  # Página inicial
-│   │-- add_usuario.html  # Formulário para adicionar usuários
-│   └-- add_tarefa.html  # Formulário para adicionar tarefas
-│-- README.md  # Documentação do projeto
-```
+Atributos:
+id_venda (PK)
+id_livro (FK)
+quantidade
+data_venda
+valor_total
+Relacionamentos:
+Livro-Autor: Um livro pode ter um ou mais autores, e um autor pode escrever vários livros.
 
-## Como Executar
+Relacionamento M:N entre Livro e Autor (resolvido por uma tabela de junção chamada Livro_Autor).
+Atributos da tabela de junção:
+id_livro
+id_autor
+Livro-Estoque: Um livro pode ter múltiplas entradas e saídas de estoque.
 
-1. **Clone o repositório:**
-   ```bash
-   ```
+Relacionamento 1:N entre Livro e Estoque.
+Livro-Venda: Um livro pode ser vendido várias vezes.
 
-2. **Crie um ambiente virtual e ative-o (opcional, mas recomendado):**
-   ```bash
-   ```
+Relacionamento 1:N entre Livro e Venda.
 
-3. **Instale as dependências:**
-   ```bash
-   pip install flask
-   ```
 
-4. **Execute a aplicação:**
-   ```bash
-   python app.py
-   ```
+# Diagrama Entidade-Relacionamento (DER)
 
-5. **Acesse no navegador:**
-   - [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
++-----------------+        +-----------------------+       +-----------------+
+|     Livro      |        |       Livro_Autor      |       |     Autor       |
++-----------------+        +-----------------------+       +-----------------+
+| id_livro (PK)  |<-----> | id_livro (FK)          |       | id_autor (PK)   |
+| titulo         |        | id_autor (FK)          |       | nome            |
+| isbn           |        +-----------------------+        | nacionalidade   |
+| edicao         |                                         | biografia       |
+| editora        |                                         +-----------------+
+| ano_publicacao |
+| preco_capa     |
+| categoria      |
++-----------------+    
 
-## Funcionalidades
+         |
+         | 1:N
+         |
++-----------------+
+|     Estoque     |
++-----------------+
+| id_estoque (PK) |
+| id_livro (FK)   |
+| quantidade      |
+| data_entrada    |
+| data_saida      |
++-----------------+
 
-- **Adicionar usuários** 🧑‍💼
-- **Adicionar tarefas** 📝
-- **Listar tarefas** 📌
-
-## Licença
-
-Este projeto está sob a licença MIT. Sinta-se à vontade para usá-lo e modificá-lo!
-
----
-Feito com ❤️ por [Matheus Fagundes](https://github.com/theuzs)
+         |
+         | 1:N
+         |
++-----------------+
+|     Venda       |
++-----------------+
+| id_venda (PK)   |
+| id_livro (FK)   |
+| quantidade      |
+| data_venda      |
+| valor_total     |
++-----------------+
 
