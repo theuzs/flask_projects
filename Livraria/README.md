@@ -50,6 +50,28 @@ Livro-Venda: Um livro pode ser vendido várias vezes.
 Relacionamento 1:N entre Livro e Venda.
 
 
+# Diagrama de Caso de Uso
+               +--------------------+
+               |    Funcionário      |
+               +--------------------+
+                        |
+         +--------------+-------------------+
+         |                                  |
+   +-------------------+          +----------------------+
+   | Cadastrar Livro   |          | Cadastrar Autor      |
+   +-------------------+          +----------------------+
+         |                                  |
+   +-------------------+          +----------------------+
+   | Registrar Entrada |          | Registrar Saída      |
+   | de Estoque        |          | de Estoque           |
+   +-------------------+          +----------------------+
+         |                                  |
+   +-------------------+          +----------------------+
+   | Realizar Venda    |<-------->| Estoque              |
+   +-------------------+          +----------------------+
+
+
+
 # Diagrama Entidade-Relacionamento (DER)
 
 +-----------------+        +-----------------------+       +-----------------+
