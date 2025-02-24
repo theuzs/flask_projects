@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada de Estoque</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 20px 0;
+        }
+        header h1 {
+            text-align: center;
+            font-size: 2.5rem;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .card {
+            max-width: 500px;
+            margin: auto;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Registrar Entrada de Estoque</h1>
+    </header>
+
+    <div class="container">
+        <div class="card shadow p-4">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="quantidade" class="form-label">Quantidade:</label>
+                    <input type="number" name="quantidade" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="data_entrada" class="form-label">Data de entrada:</label>
+                    <input type="date" name="data_entrada" class="form-control" required>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Registrar Entrada</button>
+                    <a href="/" class="btn btn-secondary">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Papelaria - Todos os direitos reservados</p>
+    </footer>
+
+</body>
+</html>
