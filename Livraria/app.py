@@ -76,13 +76,21 @@ def get_db():
 
 # Rota para a página inicial
 @app.route('/')
+
 def index():
     conn = get_db()
     c = conn.cursor()
-    c.execute("SELECT * FROM livros")
+    c.execute("""
+        SELECT l.id, l.titulo, l.isbn, l.editora, l.preco_capa, l.categoria,
+               COALESCE(SUM(e.quantidade), 0) AS estoque
+        FROM livros l
+        LEFT JOIN estoque e ON l.id = e.livro_id
+        GROUP BY l.id
+    """)
     livros = c.fetchall()
     conn.close()
     return render_template('index.html', livros=livros)
+
 
 # Rota para adicionar autor
 @app.route('/add_autor', methods=['GET', 'POST'])

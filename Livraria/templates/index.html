@@ -94,6 +94,7 @@
                     <th>Editora</th>
                     <th>Preço</th>
                     <th>Categoria</th>
+                    <th>Estoque</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -105,6 +106,7 @@
                         <td>{{ livro['editora'] }}</td>
                         <td>R$ {{ livro['preco_capa'] }}</td>
                         <td>{{ livro['categoria'] }}</td>
+                        <td>{{ livro['estoque'] }}</td>
                         <td>
                             <a href="{{ url_for('entrada_estoque', livro_id=livro['id']) }}" class="btn btn-success btn-sm">Entrada</a>
                             <a href="{{ url_for('saida_estoque', livro_id=livro['id']) }}" class="btn btn-danger btn-sm">Saída</a>
@@ -116,7 +118,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Papelaria - Todos os direitos reservados</p>
+        <p>&copy; 2025 M. Fagundes - Todos os direitos reservados</p>
     </footer>
 
 </body>
