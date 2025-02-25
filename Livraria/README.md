@@ -113,3 +113,6 @@ Relacionamento 1:N entre Livro e Venda.
 | valor_total     |
 +-----------------+
 
+
+![image](https://github.com/user-attachments/assets/b180a6f8-fbac-41fa-a30b-8400a34a8d48)
+
